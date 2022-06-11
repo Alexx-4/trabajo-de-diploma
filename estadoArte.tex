@@ -1,0 +1,89 @@
+%% Los cap'itulos inician con \chapter{T'itulo}, estos aparecen numerados y
+%% se incluyen en el 'indice general.
+%%
+%% Recuerda que aqu'i ya puedes escribir acentos como: 'a, 'e, 'i, etc.
+%% La letra n con tilde es: 'n.
+
+\chapter{Estado del Arte}
+
+A lo largo de este cap\'itulo se explica el punto m\'as avanzado en que se encuentra hoy en d\'ia los SIG y los servidores de mapas, haciendo incapi\'e en aquellos que implementan mapas tem\'aticos, sin pasar por alto la interfaz de usuario que utilizan para la configuraci\'on de servidor. Por \'ultimo, basado en la investigaci\'on de las herramientas existentes que utilizan mapas tem\'aticos y de la interfaz visual para su configuraci\'on, se decide la mejor estrategia para utilizar sobre el servidor. No sin antes acercar al lector a la historia del origen y evoluci\'on de los mapas tem\'aticos.\\
+
+
+
+\section{Origen y evoluci\'on de los mapas tem\'aticos}
+Claudio Tolomeo (siglo II), griego o egipcio, es mejor conocido como el astr\'onomo autor de la idea err\'onea del Universo, sostenida durante catorce siglos, seg\'un la cual la Tierra ocupa el centro y los planetas giran a su alrededor. Sin embargo, el gran m\'erito de Tolomeo radica en la geograf\'ia.
+
+Los mapas tem\'aticos tienen su antecedente en Tolomeo, quien los elabor\'o de tipo hist\'orico. En forma aislada aparecieron desde el siglo XVIII mapas espec\'ificos para representar alg\'un fen\'omeno de la naturaleza, adem\'as de los hist\'oricos que fueron los m\'as comunes. En la segunda mitad de este siglo se popularizaron los t\'erminos mapa y cartograf\'ia tem\'aticos y, en esta \'epoca, se han multiplicado en grado superlativo. Los primeros mapas tem\'aticos fueron muy simples, sin embargo, ameritaron su publicaci\'on en las revistas geol\'ogicas de mayor prestigio, aunque presentaban una informaci\'on muy general y pobre en extremo, nadie puede negar el inmenso valor de esa informaci\'on.
+
+Si los mapas alcanzan un grado, digamos cercano a la perfecci\'on, puede pensarse que el tema de investigaci\'on queda clausurado. Esto es cierto s\'olo parcialmente. En la medida que los mapas que representaban rasgos f\'isicos de la superficie terrestre se fueron perfeccionando, surgi\'o la necesidad de expresar otros fen\'omenos y objetos: los suelos, las comunidades de flora y fauna, las rocas, los climas, la estructura profunda de la Tierra. De la cartograf\'ia general se pas\'o a la tem\'atica.
+
+El mapa ha sido siempre un reflejo del estado de desarrollo de determinadas disciplinas cient\'ificas. Si actualmente hay decenas o cientos de mapas tem\'aticos diversos, esto da una idea del estado actual de las geociencias. Uno de los m\'as conocidos es el publicado en 1936 sobre la agricultura de Estados Unidos. Destac\'o por su originalidad. Posteriormente han sido editados mapas complejos en diversos pa\'ises, resultado de investigaciones prolongadas e incluso multidisciplinarias, apoyadas por instituciones cient\'ificas y financieras.
+
+Los mapas tem\'aticos de un mismo pa\'is o regi\'on se hacen peri\'odicamente, pretenden que la informaci\'on contenida en el mismo sea f\'acilmente comprendida por el lector o usuario. Si esta es correcta y valiosa, pero mal expresada por no usar los colores o s\'imbolos adecuados, la lectura del mapa se vuelve labor tortuosa. Por esto, el dise\~no final queda a cargo de un especialista altamente calificado, quien define colores, s\'imbolos, tama\~nos de letras, grosor de l\'ineas, distribuci\'on de la leyenda y otros problemas semejantes. Es la parte art\'istica de la cartograf\'ia.
+
+En los \'ultimos quince a\~nos asistimos a una aut\'entica revoluci\'on en el amplio campo de la cartograf\'ia, y muy especialmente en la caracterizaci\'on tridimensional del territorio. Se ha pasado en unas d\'ecadas de una cartograf\'ia casi secreta, en manos de los ej\'ercitos o de los estados, y muy limitada, a una enorme disponibilidad e incluso a la gratuidad de los materiales. Con el tiempo se han creado servidores que facilitan cartograf\'ia tem\'atica a cualquier usuario. Los servidores permiten visualizar mapas, la localizaci\'on, la identificaci\'on de atributos, las consultas sencillas e incluso la conexi\'on a bases de datos remotas para poder crear mapas tem\'aticos.
+
+
+
+\section{Herramientas SIG que implementan mapas tem\'aticos}
+Hoy en d\'ia existen servicios en l\'inea que son capaces de generar mapas tem\'aticos a partir de ciertos par\'ametros de entrada. Sin embargo es peque\~na la cantidad de t\'ecnicas de representaci\'on de datos estad\'isticos que se pueden manejar, en general los datos estad\'isticos y geogr\'aficos disponibles son los que se encuentran en los servidores de quienes administran el servicio y, en la mayor\'ia de los casos, su c\'odigo no puede ser descargado ni modificado de acuerdo a las necesidades de los usuarios. Existen herramientas de escritorio y, adem\'as, plataformas que usan servidores de mapas, lo cuales cuentan con m\'odulos que permiten la creaci\'on de mapas tem\'aticos y dejan al usuario utilizar los datos estad\'isticos que posee, sin embargo, estas son aplicaciones que no se centran en el trabajo con mapas tem\'aticos, sino en la edici\'on y gesti\'on de datos geogr\'aficos por lo que en su mayor\'ia el n\'umero de t\'ecnicas de representaci\'on de datos estad\'isticos con el que se trabaja no es muy amplio; adem\'as, en no todos los casos el c\'odigo fuente est\'a disponible.
+
+
+\subsection{QGis}
+QGis es un sistema de informaci\'on geogr\'afica de software libre y de c\'odigo abierto multiplataforma. Esta herramienta cuenta con un peque\~no m\'odulo para crear mapas tem\'aticos. La ayuda del software hace una descripci\'on acerca del uso de los mismos, en esta se plantea que est\'an disponibles cuatro modos para crear diferentes tipos de estos mapas. 
+
+Como parte de las caracter\'isticas ventajosas de QGIS, por las cuales fue motivo de estudio, se encuentran que es un Sistema de Informaci\'on Geogr\'afica de c\'odigo abierto. En la actualidad es multiplataforma, QGIS Server es una aplicaci\'on FastCGI/CGI (Common Gateway Interface) que funciona junto con un servidor web. Esta presenta funcionalidades para la creaci\'on de los mapas tem\'aticos, que permiten seleccionar en un menu deplegable varias opciones, la que nos concierne es la de Categorized, que permite asignar un color diferente a cada capa, y as\'i, crear un mapa tem\'atico, donde separa por colores la informaci\'on pertinente a estas. Adem\'as, una de las mayores ventajas de esta herramienta es la posibilidad de usar Quantum GIS como GUI (Interfaz gr\'afica de usuario) del SIG GRASS, utilizando toda la potencia de an\'alisis de este \'ultimo en un entorno de trabajo m\'as amigable. QGIS est\'a desarrollado en C++, usando la biblioteca Qt para su Interfaz gr\'afica de usuario. 
+
+A pesar de las ventajas expuestas, QGis presenta varias desventajas, que no perminten su uso en Open Latino Sever. Entre estas se encuentran que no son muchos los tipos de mapas tem\'aticos que pueden ser creados utilizando QGis. Tampoco se puede integrar al proyecto OLS con facilidad debido a que est\'a en otro lenguaje y, para a\~nadirlo, habr\'ia que migrar todo el c\'odigo a C-sharp, que ser\'ia tan o m\'as costoso que implementar la herramienta de mapas tem\'aticos desde cero, adem\'as, esto no garantizar\'a que la migraci\'on quede libre de errores. Tambi\'en se puede decir que esta herramienta no permite realizar restricciones sobre una misma capa para tematizar la informaci\'on de esta. Por \'ultimo, a pesar de que existen bindings de la librer\'ia Qt de interfaz de usuario para C-sharp, se dificulta su uso por la misma problem\'atica de la migraci\'on de c\'odigo, sin dejar de mencionar que es necesario modificar, por no decir, cambiar por completo el c\'odigo de la interfaz, puesto que el manejo de la configuraci\'on de QGis se diferencia en gran medida con la de OLS, osea que no podemos integrar directamente el frontend al servidor sino que se tiene que adaptar, en cuyo caso es preferible hacer una interfaz propia con un framework que se ajuste a las necesidades de OLS.
+
+
+\subsection{ArcGis}
+ArcGis es un completo sistema que permite recopilar, organizar, administrar, analizar, compartir y distribuir informaci\'on geogr\'afica. Permite crear y utilizar Sistemas de Informaci\'on Geogr\'afica. Una de las principales funcionalidades de ArcGIS es la creaci\'on y dise\~no de cartograf\'ia. Los mapas generados pueden ser de diversa tipolog\'ia, siendo una de las m\'as destacadas la de mapas tem\'aticos. Estos mapas permiten captar el inter\'es de los usuarios y proporcionarles informaci\'on de forma muy visual, ofreciendo un m\'etodo ideal para mostrar los resultados del trabajo SIG.
+
+Las ventajas que presenta esta herramienta radican en que se ajusta a los est\'andares internacionales establecidos en la
+OGC lo que garantiza que un mayor número de clientes puede acceder a \'el (Pues la mayor\'ia de los clientes usa el est\'andar de la OGC). ArcGis proporciona, adem\'as, una amplia posibilidad de recursos relacionados con los mapas tem\'aticos. Con esta herramienta se pueden crear, consultar y analizar datos; combinar varias capas; aplicar funciones matem\'aticas, construir y obtener nueva informaci\'on a partir de tem\'aticos ya existentes, etc.
+
+La principal desventaja que presenta este software es que no es c\'odigo abierto, sino que se distribuye comercialmente bajo tres niveles de licencia por lo tanto se descarta por no ser de c\'odigo abierto y no ser gratuito. Adem\'as, la interfaz de usuario que presenta es un poco complicada debido a que cada documento diferente en ArcGIS utiliza una GUI separada, cada GUI se compone por barra de botones, herramientas, men\'us, estados y l\'ineas de comando. Lo que dificulta su uso por usuarios poco preparados, y no es lo que se quiere en OLS.
+
+
+\subsection{MiraMon}
+MiraMon es un Sistema de Informaci\'on Geogr\'afica y servidor de Teledetecci\'on. Permite visualizaci\'on, consulta, edici\'on y an\'alisis tanto de capas r\'aster como de capas vectoriales (mapas tem\'aticos o topogr\'aficos que contengan puntos, l\'ineas o pol\'igonos, etc).
+
+Su ventaja radica en que puede ejecutarse consultas por localizaci\'on y atributos sobre capas r\'aster y vectoriales, recuperando la informaci\'on directamente desde una base de datos. Pueden obtenerse estad\'isticas de cualquier consulta por atributos. Es posible seleccionar interactivamente transectos, c\'irculos, pol\'igonos, etc, as\'i como combinar estas selecciones con consultas por atributos y obtener nuevas estad\'isticas. Los objetos seleccionados en una consulta pueden exportarse, generando nuevas capas m\'as concretas o vectoriales, o bien usarse como nuevos objetos selectores contra otra capa. En cuanto a la interfaz visual, la aplicaci\'on de configuraci\'on del navegador y del servidor permite determinar la mayor\'ia de propiedades de la navegaci\'on desde un agradable entorno visual. Tambi\'en permite administrar las capas que el servidor ofrece.
+
+Esta herramienta fue desarrollado en el lenguaje de programaci\'on C, lo cual constituye una desventaja, ya que migrar su c\'odigo fuente a nuestro servidor OLS desarrollado en C-sharp puede tener un alto costo temporal.
+
+
+\subsection{MapInfo}
+Las soluciones que proporciona MapInfo para la creaci\'on de mapas permiten llevar a cabo an\'alisis geogr\'aficos sencillos y complejos, acceso a datos remotos y creaci\'on de mapas tem\'aticos que revelen patrones en los datos. Puede visualizar los
+datos como puntos, regiones zonificadas tem\'aticamente, como gr\'aficos de tartas o de barras , etc.
+
+Como parte de las caracter\'isticas ventajosas de MapInfo se encuentran que permite llevar a cabo las operaciones geogr\'aficas
+como la divisi\'on en regiones. Nos permite hacer consultas a nuestros datos, y acceder a los mismos por muy lejanos que est\'en, de manera directa. Por ejemplo, puede mostrar qu\'e sucursal es la m\'as cerca de sus clientes m\'as grandes. Puede calcular
+las distancias entre clientes y almacenes; puede clasificar por colores los s\'imbolos de almacenes por el volumen de ventas. Todo esto lo hace visualizando los datos sobre el mapa tem\'atico. MapInfo cuenta con una potente y flexible interfaz de usuario, interactiva para mapas tem\'aticos, esta interfaz permite a los usuarios anclar las barras de herramientas en los cuatro lados de la aplicaci\'on, ayudando a mejorar la eficiencia, reducir la conglomeraci\'on sobre la pantalla, y ahorrar tiempo.
+
+Como parte de las desventajas que nos inclinan a descartar a MapInfo se encuentra que no es multiplataforma, solo est\'a disponible para Windows. Adem\'as, es un software privado de la compa\~n\'ia Precisely, antiguamente Pitney Bowes Inc, lo que no se corresponde con las pol\'iticas de migraci\'on a software libre e imposibilita su adquisici\'on. Finalmente, es un software basado en Python, lo cual entorpecer\'ia su integraci\'on a OLS por la problem\'atica antes mencionada de migraci\'on de c\'odigo.
+
+
+\subsection{SharpMap}
+SharpMap es una biblioteca de clases para crear aplicaciones web. Con esta librer\'ia se pueden realizar consultas a los datos espaciales para el manejo y an\'alisis de los mismos.
+
+Ser\'ia ventajoso el uso de SharMap ya que es un sistema SIG escrito totalmente en C\# .NET 4.0, y admite m\'ultiples lenguajes de desarrollo .Net (C\#, C$++$, etc). Tambi\'en, presenta la clase \textit{CustomTheme}, que es usada para definir un tem\'atico propio, esta presenta dos m\'etodos p\'ublicos: \textit{CustomTheme}, para crear la clase, y \textit{GetStyle}, para obtener un estilo para pintar el tem\'atico. Adem\'as, con la herramienta \textit{SharpMap.Rendering.Thematics.CategoryTheme} se crean categor\'ias usando rangos de valores para comparar con el campo elegido. 
+
+Una notale desventaja de esta biblioteca es que al no ser multiplataforma dar\'ia un paso atr\'as en el desarrollo de OLS, que ya
+fue mejorado a un proyecto multiplataforma. Por otro lado, al estar basado en el framework .Net 4.0, y este no presentar una versi\'on compatible con ASP.NET Core, entra en conflicto con la \'ultima versi\'on de OLS, que ya fue migrado a ASP.NET Core. SharpMap carece, adem\'as, de una interfaz visual, por lo que es necesario usar c\'odigo, lo cual dificulta a usuarios que no est\'en familiarizados con la programaci\'on hacer uso de esta, y es una de las cosas que se quiere evitar en OLS. Por \'ultimo, otra restricci\'on que presenta esta biblioteca, es que no presenta muchos tipos de tem\'aticos.
+
+
+
+\section{Justificaci\'on del uso de React para la interfaz visual de OLS}
+Como se dijo anteriormente, se hace necesario la creaci\'on de una interfaz propia que responda a las necesidades propias de OLS, para ello se har\'a uso del framework React.
+
+ReactJS es una librer\'ia escrita en JavaScript de c\'odigo abierto enfocada a la visualizaci\'on para facilitar la creaci\'on de componentes interactivos y reutilizables para interfaces de usuario. Esta librer\'ia fue lanzada en el a\~no 2013 y desarrollada por Facebook, quienes tambi\'en la mantienen actualmente junto a una comunidad de desarrolladores independientes y compa\~n\'ias. Hoy en d\'ia muchas empresas de primer nivel utilizan ReactJS para el desarrollo de sus aplicaciones, entre ellas podemos encontrar Facebook, Instagram y el cliente web de WhatsApp, y otras como AirBnb, Uber, Netflix, Twitter, Reddit o Paypal.
+
+La caracter\'istica y ventaja m\'as importante de ReactJS es el componente, una pieza de interfaz de usuario. Al dise\~nar una App con React, lo que se crean son componentes independientes y reusables para crear interfaces de usuario m\'as complejas. De esta manera, ReactJS est\'a basado en un paradigma llamado programaci\'on orientada a componentes en el que cada componente es una pieza con la que el usuario puede interactuar. Estas piezas se crean usando una sintaxis llamada JSX permitiendo escribir HTML (y opcionalmente CSS) dentro de objetos JavaScript.
+
+Entre las muchas ventajas que tiene el uso de React resalta el desarrollo rentable, ofreciendo una v\'ia econ\'omica para crear aplicaciones multiplataforma. Adem\'as, se necesitan menos esfuerzos, ya que se requiere menos c\'odigo en comparaci\'on con otras plataformas de desarrollo. Tambi\'en, dado el hecho de que ReactJS es una plataforma de c\'odigo abierto con licencia del MIT, brinda acceso para usar bibliotecas y marcos de forma gratuita. Por \'ultimo la integraci\'on de React con .Net Core no es complicada, y existe mucha documentaci\'on al respecto.
+
+
+\section{Conclusiones}
+Luego del an\'alisis y estudio de las herramientas anteriores de Sistemas de Informaci\'on Geogr\'afica, y debido a las deficiencias y complicaciones que resultar\'ia su integraci\'on a OLS, como la falta de compatibilidad del lenguaje, interfaces visuales pobres o no existentes, la privacidad que impide la libre adquisici\'on del software, poca capacidad para generar mapas tem\'aticos, entre otras causas, se llega a la conclusi\'on de que la mejor opci\'on es implementar una nueva herramienta que permita configurar y visualizar mapas tem\'aticos de clasificaci\'on de tipos, con una interfaz visual propia que permita configurar el servidor atendiendo a sus caracter\'isticas particulares. Para la implementaci\'on de esta interfaz se har\'a uso del framework React, cuyas ventajas se expusieron en el ep\'igrafe anterior como justificaci\'on para su utilizaci\'on en el proyecto.
