@@ -31,17 +31,42 @@ Hoy en d\'ia existen servicios en l\'inea que son capaces de generar mapas tem\'
 
 
 \subsection{QGis}
-QGis es un sistema de informaci\'on geogr\'afica de software libre\footnote{significa que los usuarios tienen la libertad de ejecutar, copiar, distribuir, estudiar, modificar y mejorar el software} y de c\'odigo abierto\footnote{software cuyo c\'odigo fuente se ha puesto a disposici\'on de todo el mundo de manera gratuita}, multiplataforma, que funciona junto con un servidor web \cite{ART}. Esta herramienta cuenta con un peque\~no m\'odulo para crear mapas tem\'aticos. La ayuda del software hace una descripci\'on acerca del uso de los mismos, en esta se plantea que est\'an disponibles cuatro modos para crear diferentes tipos de estos mapas.  
+QGis es un sistema de informaci\'on geogr\'afica de software libre\footnote{significa que los usuarios tienen la libertad de ejecutar, copiar, distribuir, estudiar, modificar y mejorar el software} y de c\'odigo abierto\footnote{software cuyo c\'odigo fuente se ha puesto a disposici\'on de todo el mundo de manera gratuita}, multiplataforma, que funciona junto con un servidor web \cite{ART}. Esta herramienta cuenta con un peque\~no m\'odulo para crear mapas tem\'aticos. La ayuda del software hace una descripci\'on acerca del uso de los mismos, en esta se plantea que est\'an disponibles cuatro modos para crear diferentes tipos de estos mapas.
 
-Como ventajas, este sistema multiplataforma de c\'odigo abierto presenta funcionalidades para la creaci\'on de los mapas tem\'aticos, que permiten seleccionar, en un men\'u deplegable, varias opciones; la que nos concierne es la de Categorized, que permite asignar un color diferente a cada capa, y as\'i, crear un mapa tem\'atico, donde separa por colores la informaci\'on pertinente a estas. Adem\'as, una de las mayores ventajas de esta herramienta es la posibilidad de usar Quantum GIS como GUI (Interfaz gr\'afica de usuario) del SIG GRASS \cite{qgis}, utilizando toda la potencia de an\'alisis de este \'ultimo en un entorno de trabajo m\'as amigable. QGIS est\'a desarrollado en C++\footnote{lenguaje de programaci\'on multiparadigma dise\~nado en 1979 por Bjarne Stroustrup.}, usando la biblioteca Qt\footnote{framework multiplataforma orientado a objetos ampliamente usado para desarrollar programas que utilicen interfaz gr\'afica de usuario} para su Interfaz gr\'afica de usuario.
+Como ventajas, este sistema multiplataforma de c\'odigo abierto presenta funcionalidades para la creaci\'on de los mapas tem\'aticos, que permiten seleccionar, en un men\'u deplegable, varias opciones; la que nos concierne es la de Categorized, que permite asignar un color diferente a cada capa, y as\'i, crear un mapa tem\'atico, donde separa por colores la informaci\'on pertinente a estas (figura \ref{qGisTematic}). 
 
-A pesar de las ventajas expuestas, QGis presenta varias desventajas, que no perminten su uso en Open Latino Sever. Entre estas se encuentran que no son muchos los tipos de mapas tem\'aticos que pueden ser creados utilizando QGis. Tampoco se puede integrar al proyecto OLS con facilidad debido a que est\'a en otro lenguaje y, para a\~nadirlo, habr\'ia que migrar todo el c\'odigo a C-sharp, que ser\'ia tan o m\'as costoso que implementar la herramienta de mapas tem\'aticos desde cero, adem\'as, esto no garantizar\'a que la migraci\'on quede libre de errores. Tambi\'en se puede decir que esta herramienta no permite realizar restricciones sobre una misma capa para tematizar la informaci\'on de esta. Por \'ultimo, a pesar de que existen bindings de la librer\'ia Qt de interfaz de usuario para C-sharp, se dificulta su uso por la misma problem\'atica de la migraci\'on de c\'odigo, sin dejar de mencionar que es necesario modificar, por no decir, cambiar por completo el c\'odigo de la interfaz, puesto que el manejo de la configuraci\'on de QGis se diferencia, en gran medida, con la de OLS, osea que no podemos integrar directamente el frontend al servidor, sino que se tiene que adaptar, en cuyo caso es preferible hacer una interfaz propia con un framework que se ajuste a las necesidades de OLS.
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/qGisTematic.jpg} 
+\end{center} \vspace{-20pt} \caption{Mapa tem\'atico creado con QGis.}  \label{qGisTematic} \vspace{-10pt} 
+\end{wrapfigure}
+
+Adem\'as, una de las mayores ventajas de esta herramienta es la posibilidad de usar Quantum GIS como GUI (Interfaz gr\'afica de usuario) del SIG GRASS \cite{qgis}, utilizando toda la potencia de an\'alisis de este \'ultimo en un entorno de trabajo m\'as amigable (figura \ref{qGisvisual}). QGIS est\'a desarrollado en C++\footnote{lenguaje de programaci\'on multiparadigma dise\~nado en 1979 por Bjarne Stroustrup.}, usando la biblioteca Qt\footnote{framework multiplataforma orientado a objetos ampliamente usado para desarrollar programas que utilicen interfaz gr\'afica de usuario} para su Interfaz gr\'afica de usuario.
+
+A pesar de las ventajas expuestas, QGis presenta varias desventajas, que no perminten su uso en Open Latino Sever. Entre estas se encuentran que no son muchos los tipos de mapas tem\'aticos que pueden ser creados utilizando QGis. 
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/qGisUi.jpg} 
+\end{center} \vspace{-20pt} \caption{Interfaz visual QGis.}  \label{qGisvisual} \vspace{-10pt} 
+\end{wrapfigure}
+
+Tampoco se puede integrar al proyecto OLS con facilidad debido a que est\'a en otro lenguaje y, para a\~nadirlo, habr\'ia que migrar todo el c\'odigo a C-sharp, que ser\'ia tan o m\'as costoso que implementar la herramienta de mapas tem\'aticos desde cero, adem\'as, esto no garantizar\'a que la migraci\'on quede libre de errores. Tambi\'en se puede decir que esta herramienta no permite realizar restricciones sobre una misma capa para tematizar la informaci\'on de esta. Por \'ultimo, a pesar de que existen \emph{bindings} \footnote{adaptaci\'on de una biblioteca para ser usada en un lenguaje de programaci\'on distinto de aquel en el que ha sido escrita. Esta palabra no tiene traducci\'on al espa\~nol} de la librer\'ia Qt de interfaz de usuario para C-sharp, se dificulta su uso por la misma problem\'atica de la migraci\'on de c\'odigo, sin dejar de mencionar que es necesario modificar, por no decir, cambiar por completo el c\'odigo de la interfaz, puesto que el manejo de la configuraci\'on de QGis se diferencia, en gran medida, con la de OLS, osea que no podemos integrar directamente el frontend al servidor, sino que se tiene que adaptar, en cuyo caso es preferible hacer una interfaz propia con un framework que se ajuste a las necesidades de OLS.
 
 
 \subsection{ArcGis}
-ArcGis es un completo sistema que permite recopilar, organizar, administrar, analizar, compartir y distribuir informaci\'on geogr\'afica. Permite crear y utilizar Sistemas de Informaci\'on Geogr\'afica. Una de las principales funcionalidades de ArcGIS es la creaci\'on y dise\~no de cartograf\'ia. Los mapas generados pueden ser de diversa tipolog\'ia, siendo una de las m\'as destacadas la de mapas tem\'aticos. Estos mapas permiten captar el inter\'es de los usuarios y proporcionarles informaci\'on de forma muy visual, ofreciendo un m\'etodo ideal para mostrar los resultados del trabajo SIG.
+ArcGis es un completo sistema que permite recopilar, organizar, administrar, analizar, compartir y distribuir informaci\'on geogr\'afica. Permite crear y utilizar Sistemas de Informaci\'on Geogr\'afica. Una de las principales funcionalidades de ArcGIS es la creaci\'on y dise\~no de cartograf\'ia. Los mapas generados pueden ser de diversa tipolog\'ia, siendo una de las m\'as destacadas la de mapas tem\'aticos (figura \ref{arcGis}). Estos mapas permiten captar el inter\'es de los usuarios y proporcionarles informaci\'on de forma muy visual, ofreciendo un m\'etodo ideal para mostrar los resultados del trabajo SIG.
 
-Las ventajas que presenta esta herramienta radican en que proporciona una amplia posibilidad de recursos relacionados con los mapas tem\'aticos. Con esta herramienta se pueden crear, consultar y analizar datos; combinar varias capas; aplicar funciones matem\'aticas, construir y obtener nueva informaci\'on a partir de tem\'aticos ya existentes, etc. En ArcGis, la finalidad de un mapa tem\'atico es la de representar de una o varias caracter\'isticas de fen\'omenos geogr\'aficos, pudiendo dividir a estos en objetos reales: distribuci\'on, densidad, relaci\'on, etc; y conceptos abstractos: indicadores de desarrollo econ\'omico, calidad de vida, etc. Estos mapas pueden ser publicados en web permitiendo, mediante ventanas emergentes, la visualizaci\'on de una o varias de estas caracter\'isticas,  fotograf\'ias de los fen\'omenos y acceso a otra informaci\'on en la web. \cite{ART}
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/arcGis.png} 
+\end{center} \vspace{-20pt} \caption{ArcGis. Interfaz visual y mapa tem\'atico.}  \label{arcGis} \vspace{-10pt} 
+\end{wrapfigure}
+
+Las ventajas que presenta esta herramienta radican en que proporciona una amplia posibilidad de recursos relacionados con los mapas tem\'aticos. Con esta herramienta se pueden crear, consultar y analizar datos; combinar varias capas; aplicar funciones matem\'aticas, construir y obtener nueva informaci\'on a partir de tem\'aticos ya existentes, etc. En ArcGis, la finalidad de un mapa tem\'atico es la de representar de una o varias caracter\'isticas de fen\'omenos geogr\'aficos, pudiendo dividir a estos en objetos reales: distribuci\'on, densidad, relaci\'on, etc; y conceptos abstractos: indicadores de desarrollo econ\'omico, calidad de vida, etc. Estos mapas pueden ser publicados en web permitiendo, mediante ventanas emergentes, la visualizaci\'on de una o varias de estas caracter\'isticas,  fotograf\'ias de los fen\'omenos y acceso a otra informaci\'on en la web. \cite{ART} 
 
 La principal desventaja que presenta este software es que no es c\'odigo abierto, sino que se distribuye comercialmente bajo tres niveles de licencia, por lo tanto se descarta por no ser de c\'odigo abierto y no ser gratuito. Adem\'as, la interfaz de usuario que presenta es un poco complicada, debido a que cada documento diferente en ArcGIS utiliza una GUI separada, cada GUI se compone por barra de botones, herramientas, men\'us, estados y l\'ineas de comando, lo que dificulta su uso por usuarios poco preparados, y no es lo que se quiere en OLS.
 
@@ -49,13 +74,34 @@ La principal desventaja que presenta este software es que no es c\'odigo abierto
 \subsection{MapInfo}
 Las soluciones que proporciona MapInfo \cite{mapinfo} para la creaci\'on de mapas permiten llevar a cabo an\'alisis geogr\'aficos sencillos y complejos, acceso a datos remotos y creaci\'on de mapas tem\'aticos que revelen patrones en los datos. Se pueden visualizar los datos como puntos, regiones zonificadas tem\'aticamente, como gr\'aficos de tartas o de barras , etc.
 
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/mapInfoTematic.jpg} 
+\end{center} \vspace{-20pt} \caption{Mapa tem\'atico creado con MapInfo.}  \label{mapinfo} \vspace{-10pt} 
+\end{wrapfigure}
+
 Como parte de las caracter\'isticas ventajosas se encuentran que, con MapInfo, se pueden crear distintos mapas tem\'aticos asign\'andoles a estos colores, patrones o s\'imbolos para establecer una coincidencia con objetos seg\'un valores espec\'ificos de la tabla. La caracter\'istica Mapa tem\'atico utiliza un asistente compuesto de una secuencia de tres cuadros de di\'alogo que facilitan la selecci\'on del tipo de mapa tem\'atico que se desea, las tablas y los campos que se utilizar\'an para construir el mapa y diversas opciones para personalizarlo. Las plantillas tem\'aticas de MapInfo facilitan el comienzo de la creaci\'on de un tema. Se selecciona una plantilla que represente el tipo de mapa tem\'atico que se desea. Las plantillas se pueden personalizar completamente y pueden guardarse como nuevas plantillas en caso de que se precisen para la creaci\'on de mapas tem\'aticos m\'as adelante. Con MapInfo se suministran m\'as de 40 plantillas. MapInfo cuenta con una potente y flexible interfaz de usuario, interactiva para mapas tem\'aticos, esta interfaz permite a los usuarios anclar las barras de herramientas en los cuatro lados de la aplicaci\'on, ayudando a mejorar la eficiencia, reducir la conglomeraci\'on sobre la pantalla, y ahorrar tiempo. \cite{mapinfo}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/mapInfoUi.png} 
+\end{center} \vspace{-20pt} \caption{Interfaz visual de configuraci\'on de MapInfo.}  \label{mapinfo2} \vspace{-10pt} 
+\end{wrapfigure}
 
 Como parte de las desventajas que nos inclinan a descartar a MapInfo se encuentra que no es multiplataforma, solo est\'a disponible para Windows\footnote{sistema operativo, es decir, un conjunto de programas que posibilita la administraci\'on de los recursos de una computadora}. Adem\'as, es un software privado de la compa\~n\'ia Precisely, antiguamente Pitney Bowes Inc, lo que no se corresponde con las pol\'iticas de migraci\'on a software libre e imposibilita su adquisici\'on. Finalmente, es un software basado en Python\footnote{lenguaje de programaci\'on ampliamente utilizado en las aplicaciones web, el desarrollo de software, la ciencia de datos y el machine learning}, lo cual entorpecer\'ia su integraci\'on a OLS por la problem\'atica antes mencionada de migraci\'on de c\'odigo.
 
 
 \subsection{SharpMap}
 SharpMap \cite{sharpmap} es una biblioteca de clases para crear aplicaciones web. Con esta librer\'ia se pueden realizar consultas a los datos espaciales para el manejo y an\'alisis de los mismos.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/sharpmap.png} 
+\end{center} \vspace{-20pt} \caption{Mapa tem\'atico creado con SharpMap.}  \label{sharpmap} \vspace{-10pt} 
+\end{wrapfigure}
 
 Ser\'ia ventajoso el uso de SharMap ya que es un sistema SIG escrito totalmente en C\# .NET 4.0, y admite m\'ultiples lenguajes de desarrollo .Net (C\#, C$++$, etc). Tambi\'en, presenta la clase \textit{CustomTheme}, que es usada para definir un tem\'atico propio, esta presenta dos m\'etodos p\'ublicos: \textit{CustomTheme}, para crear la clase, y \textit{GetStyle}, para obtener un estilo para pintar el tem\'atico. Adem\'as, con la herramienta \textit{SharpMap.Rendering.Thematics.CategoryTheme} se crean categor\'ias usando rangos de valores para comparar con el campo elegido. \cite{sharpmap}
 
@@ -69,7 +115,16 @@ Como se dijo anteriormente, se hace necesario la creaci\'on de una interfaz prop
 
 
 \subsection{React}
-ReactJS es una librer\'ia escrita en JavaScript de c\'odigo abierto enfocada a la visualizaci\'on para facilitar la creaci\'on de componentes interactivos y reutilizables para interfaces de usuario \cite{react}. Esta librer\'ia fue lanzada en el a\~no 2013 y desarrollada por Facebook, quienes tambi\'en la mantienen actualmente junto a una comunidad de desarrolladores independientes y compa\~n\'ias. La caracter\'istica m\'as importante de ReactJS es el componente, una pieza de interfaz de usuario. Al dise\~nar una App con React, lo que se crean son componentes independientes y reusables para crear interfaces de usuario m\'as complejas. De esta manera, ReactJS est\'a basado en un paradigma llamado programaci\'on orientada a componentes en el que cada componente es una pieza con la que el usuario puede interactuar. Estas piezas se crean usando una sintaxis llamada JSX \cite{react} permitiendo escribir HTML\footnote{lenguaje con el que se define el contenido de las p\'aginas web} (y opcionalmente CSS\footnote{lenguaje que maneja el dise\~no y presentaci\'on de las p\'aginas web}) dentro de objetos JavaScript.
+ReactJS (figura \ref{react}) es una librer\'ia escrita en JavaScript de c\'odigo abierto enfocada a la visualizaci\'on para facilitar la creaci\'on de componentes interactivos y reutilizables para interfaces de usuario \cite{react}. Esta librer\'ia fue lanzada en el a\~no 2013 y desarrollada por Facebook, quienes tambi\'en la mantienen actualmente junto a una comunidad de desarrolladores independientes y compa\~n\'ias. 
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/reactLogo.png} 
+\end{center} \vspace{-20pt} \caption{Logo React.}  \label{react} \vspace{-10pt} 
+\end{wrapfigure}
+
+La caracter\'istica m\'as importante de ReactJS es el componente, una pieza de interfaz de usuario. Al dise\~nar una App con React, lo que se crean son componentes independientes y reusables para crear interfaces de usuario m\'as complejas. De esta manera, ReactJS est\'a basado en un paradigma llamado programaci\'on orientada a componentes en el que cada componente es una pieza con la que el usuario puede interactuar. Estas piezas se crean usando una sintaxis llamada JSX \cite{react} permitiendo escribir HTML\footnote{lenguaje con el que se define el contenido de las p\'aginas web} (y opcionalmente CSS\footnote{lenguaje que maneja el dise\~no y presentaci\'on de las p\'aginas web}) dentro de objetos JavaScript.
 
 Entre las muchas ventajas que tiene el uso de React resalta el desarrollo rentable, ofreciendo una v\'ia econ\'omica para crear aplicaciones multiplataforma. Adem\'as, se necesitan menos esfuerzos, ya que se requiere menos c\'odigo en comparaci\'on con otras plataformas de desarrollo. Tambi\'en, dado el hecho de que ReactJS es una plataforma de c\'odigo abierto con licencia del MIT, brinda acceso para usar bibliotecas y marcos de forma gratuita.
 
@@ -77,7 +132,14 @@ Como parte de las desventajas que motivaron a no usar esta biblioteca se destaca
 
 
 \subsection{Vue}
-Vue es un marco de trabajo flexible y ligero basado en JavaScript que ofrece potentes herramientas web para desarrollar proyectos web frontales modernistas \cite{vue}. Vue tambi\'en se considera un marco JavaScript flexible y evolutivo, ya que permite realizar cambios en el c\'odigo de una aplicaci\'on sin que ello afecte a ninguna caracter\'istica fundamental, lo que permite crear una interfaz de usuario progresiva. La gran flexibilidad de Vue tambi\'en permite a\~nadir m\'odulos a medida y componentes visuales a la funcionalidad de la aplicaci\'on web.
+Vue (figura \ref{vue}) es un marco de trabajo flexible y ligero basado en JavaScript que ofrece potentes herramientas web para desarrollar proyectos web frontales modernistas \cite{vue}. Vue tambi\'en se considera un marco JavaScript flexible y evolutivo, ya que permite realizar cambios en el c\'odigo de una aplicaci\'on sin que ello afecte a ninguna caracter\'istica fundamental, lo que permite crear una interfaz de usuario progresiva. La gran flexibilidad de Vue tambi\'en permite a\~nadir m\'odulos a medida y componentes visuales a la funcionalidad de la aplicaci\'on web.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/vueLogo.png} 
+\end{center} \vspace{-20pt} \caption{Logo Vue.}  \label{vue} \vspace{-10pt} 
+\end{wrapfigure}
 
 Como parte de las ventajas de esta herramienta podemos mencionar que presenta HTML empoderado, esto significa que Vue.js tiene muchas similitudes con Angular, y esto puede ayudar a optimizar el manejo de bloques HTML usando diferentes componentes. Por otro lado, tiene una documentaci\'on muy completa, que puede acelerar la curva de aprendizaje para desarrolladores y ahorrar mucho tiempo en el desarrollo de una aplicaci\'on, usando s\'olo conocimientos b\'asicos de HTML y JavaScript. Se puede decir, adem\'as, que este framework se usa para construir tanto aplicaciones de p\'agina \'unica (SPA)\footnote{aplicaciones o sitios web que cargan todos los recursos necesarios para navegar por los sitios web en la primera carga de la p\'agina} o complejas interfaces web de aplicaciones. Tambi\'en, Vue.js puede ocupar cerca de 20KB manteniendo su velocidad y flexibilidad, que permite alcanzar un mejor rendimiento en comparaci\'on con otros frameworks. Finalmente, Vue.js ayuda a construir grandes plantillas reutilizables en poco tiempo de acuerdo con su sencilla estructura.
 
@@ -85,7 +147,16 @@ Como desventaja, Vue.js a\'un tiene poca cuota de mercado comparado con Angular 
 
 
 \subsection{Angular}
-Angular es una plataforma de desarrollo, construida sobre TypeScript\footnote{lenguaje de programaci\'on construido a un nivel superior de JavaScript, que a\~nade tipados est\'aticos y objetos basados en clases}, un framework basado en componentes para crear aplicaciones web escalables. Es una colecci\'on de bibliotecas bien integradas que cubren una amplia variedad de caracter\'isticas, que incluyen enrutamiento, administraci\'on de formularios, comunicaci\'on cliente-servidor y m\'as \cite{angular}. Angular proporciona un conjunto de herramientas que permiten desarrollar, compilar, probar y actualizar el c\'odigo fuente de la aplicaci\'on. Se ha convertido en una alternativa popular para dise\~nar aplicaciones multiplataforma ya que admite arquitecturas MVC y MVVM\footnote{patr\'on Model-View-ViewModel, ayuda a separar limpiamente la l\'ogica empresarial y de presentaci\'on de una aplicaci\'on de su interfaz de usuario} del lado del cliente, lo que facilita a los desarrolladores la creaci\'on de aplicaciones.
+Angular (figura \ref{angular}) es una plataforma de desarrollo, construida sobre TypeScript\footnote{lenguaje de programaci\'on construido a un nivel superior de JavaScript, que a\~nade tipados est\'aticos y objetos basados en clases}, un framework basado en componentes para crear aplicaciones web escalables. Es una colecci\'on de bibliotecas bien integradas que cubren una amplia variedad de caracter\'isticas, que incluyen enrutamiento, administraci\'on de formularios, comunicaci\'on cliente-servidor y m\'as \cite{angular}.
+
+Angular proporciona un conjunto de herramientas que permiten desarrollar, compilar, probar y actualizar el c\'odigo fuente de la aplicaci\'on. Se ha convertido en una alternativa popular para dise\~nar aplicaciones multiplataforma ya que admite arquitecturas MVC y MVVM\footnote{patr\'on Model-View-ViewModel, ayuda a separar limpiamente la l\'ogica empresarial y de presentaci\'on de una aplicaci\'on de su interfaz de usuario} del lado del cliente, lo que facilita a los desarrolladores la creaci\'on de aplicaciones.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\vspace{-20pt}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/angularLogo.png} 
+\end{center} \vspace{-20pt} \caption{Logo Angular.}  \label{angular} \vspace{-10pt} 
+\end{wrapfigure}
 
 Como ventajas, se puede decir que Angular tiene una estructura basada en componentes lo que hace que estos sean altamente reutilizables, y simplifica el proceso de desarrollo. Angular tiene, adem\'as, una gu\'ia de estilo de documentaci\'on y CLI\footnote{herramienta de l\'inea de comandos que se utiliza para inicializar, desarrollar, estructurar y mantener aplicaciones de Angular}, ambas consistencias de unidad. La codificaci\'on consistente tiene varios beneficios como plantillas o fragmentos predefinidos, f\'acil uso de sitios, etc. Tambi\'en, es compatible con arquitectura MVC, y utiliza la fuente HTML para describir la interfaz de usuario de la aplicaci\'on porque es un lenguaje intuitivo, declarativo y menos complicado. Por \'ultimo, cuando se implementa para proyectos de desarrollo web, Angular se integra sin problemas, ofreciendo un marco inteligente y robusto que ahorra mucho tiempo a los desarrolladores. 
 
