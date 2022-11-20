@@ -6,7 +6,7 @@
 
 \chapter{Soluci\'on Te\'orico-Conceptual-Computacional}
 
-El presente cap\'itulo se enfocar\'a en el marco te\'orico-computacional de la propuesta de soluci\'on, abordando las acciones que pueden realizar los usuarios de OLS y la estructura de la aplicaci\'on, as\'i como la arquitecura y patr\'on de visualizaci\'on empleado. Se explicar\'an, adem\'as, las modificaciones realizadas sobre el c\'odigo fuente del servidor, dando a conocer, finalmente, algunos detalles de implementaci\'on de las nuevas herramientas creadas.
+El presente cap\'itulo se enfocar\'a en el marco te\'orico-computacional de la propuesta de soluci\'on, abordando las acciones que pueden realizar los usuarios de OLS y la estructura de la aplicaci\'on, as\'i como la arquitectura y patr\'on de visualizaci\'on empleado. Se explicar\'an, adem\'as, las modificaciones realizadas sobre el c\'odigo fuente del servidor, dando a conocer, finalmente, algunos detalles de implementaci\'on de las nuevas herramientas creadas.
 
 \section{Diagrama de casos de uso en Open Latino Server}
 Las funcionalidades de OLS son consumidas por usuarios y aplicaciones cliente. Un usuario representa al humano que accede a la interfaz visual y puede hacer determinados cambios como agregar capas, editar tem\'aticos, crear workspaces, etc\'etera. Un cliente constituye una aplicaci\'on registrada para usar los servicios del servidor de mapas\footnote{Los servicios son los tipos de pedidos que se pueden hacer en OLS, por ejemplo: GetMap, GetCapabilities, entre otros}.
@@ -42,7 +42,7 @@ $\bullet$ Tiene acceso a todos los workspaces creados por los usuarios, as\'i co
 
 
 \subsection{Aplicaciones cliente}
-Los permisos que tienen las aplicaciones cliente para acceder a los servicios de OLS son controlados mediante workspaces. Un Workspace permite restringir las capas y funcionalidades del sistema. Todo cliente que se registra en el nuevo servidor de OpenLatino adquiere acceso a un Workspace llamado “common”. Este espacio de trabajo cuenta con un m\'inimo de funcionalides y capas para que el cliente pueda usar. Adem\'as, como ya se dijo, el usuario que registr\'o la aplicaci\'on puede crear nuevos Workspaces y as\'i darle acceso a m\'as capas y servicios.
+Los permisos que tienen las aplicaciones cliente para acceder a los servicios de OLS son controlados mediante workspaces. Un Workspace permite restringir las capas y funcionalidades del sistema. Todo cliente que se registra en el nuevo servidor de OpenLatino adquiere acceso a un Workspace llamado \textit{common}. Este espacio de trabajo cuenta con un m\'inimo de funcionalidades y capas para que el cliente pueda usar. Adem\'as, como ya se dijo, el usuario que registr\'o la aplicaci\'on puede crear nuevos Workspaces y as\'i darle acceso a m\'as capas y servicios.
 
 \begin{wrapfigure}{l}{0.5\textwidth} 
 \vspace{-20pt} 
@@ -90,7 +90,7 @@ Como resultado de la incorporaci\'on de nuevas tablas relacionadas con \textit{S
 
 
 \section{Arquitectura de software}
-La arquitectura de software es el conjunto de estructuras necesarias para dar sentido a un sistema, lo cual abarca los elementos del software, las relaciones entre ellos y las propiedades de ambos. La arquitectura en capas es una de las m\'as utilizadas, esta se enfoca en la distribuci\'on de roles y responsabilidades de forma jer\'arquica dando una forma muy efectiva de separaci\'on de responsabilidades. El rol indica el modo y tipo de interacci\'on con otras capas, y la responsabilidad indica la funcionalidad que est\'a siendo desarrollada. \cite{arquitecture2}
+La arquitectura de software es el conjunto de estructuras necesarias para dar sentido a un sistema, lo cual abarca los elementos del software, las relaciones entre ellos y las propiedades de ambos. La arquitectura en capas es una de las m\'as utilizadas, esta se enfoca en la distribuci\'on de roles y responsabilidades de forma jer\'arquica dando una forma muy efectiva de separaci\'on de responsabilidades. El rol indica el modo y tipo de interacci\'on con otras capas, y la responsabilidad indica la funcionalidad que est\'a siendo desarrollada. \cite{architecture2}
 
 \begin{wrapfigure}{l}{0.5\textwidth} 
 \vspace{-20pt} 
@@ -99,18 +99,18 @@ La arquitectura de software es el conjunto de estructuras necesarias para dar se
 \end{center} \vspace{-20pt} \caption{Ejemplo de Arquitectura de capas con 4 capas en su forma flexible.} \label{flexible} \vspace{-10pt} 
 \end{wrapfigure}
 
-En una arquitectura de capas, todas las capas se colocan de forma horizontal, donde una capa solo puede depender otra que est\'e por debajo de ella, nunca por encima. En una forma estricta de la arquitectura, solo se puede acceder a la capa que est\'a exactamente debajo. Si se usa un acercamiento m\'as flexible, como se puede observar en la Figura \ref{flexible}, una capa puede acceder a todas las capas por debajo de ella. \cite{arquitecture}
+En una arquitectura de capas, todas las capas se colocan de forma horizontal, donde una capa solo puede depender otra que est\'e por debajo de ella, nunca por encima. En una forma estricta de la arquitectura, solo se puede acceder a la capa que est\'a exactamente debajo. Si se usa un acercamiento m\'as flexible, como se puede observar en la Figura \ref{flexible}, una capa puede acceder a todas las capas por debajo de ella. \cite{architecture}
 
-La arquitectura de capas divide la aplicaci\'on en capas con la intenci\'on de que cada capa tenga un rol muy definido, no define la cantidad de capas que debe tener la aplicaci\'on y aplica el principio de separaci\'on de preocupaciones. La ventaja principal de este estilo es que el desarrollo se puede llevar a cabo en varios niveles y en caso de tener que hacer alg\'un cambio, solo se realiza en el nivel que le corresponda.
+La arquitectura de capas divide la aplicaci\'on con la intenci\'on de que cada una tenga un rol muy definido, no define la cantidad de capas que debe tener la aplicaci\'on y aplica el principio de separaci\'on de preocupaciones. La ventaja principal de este estilo es que el desarrollo se puede llevar a cabo en varios niveles y, en caso de tener que hacer alg\'un cambio, solo se realiza en el nivel que le corresponda.
 
 \subsection{Modificaciones a la arquitectura de OLS}
-OpenLatino Server implementa Clean Arquitecture\footnote{Arquitectura limpia en espa\~nol. Presentada por Robert C. Martin (Uncle Bob) en su blog, el 13 de agosto de 2012 \cite{cleanArquitecture}}, la cual es una arquitectura por capas.  En la figura \ref{cleanArquitecture} se muestra la Arquitectura de software \textit{Clean Architecture} implementada en OLS. Se puede observar la separaci\'on de las capas y la dependencia que existe entre ellas.
+OpenLatino Server implementa \textit{Clean Architecture}\footnote{Arquitectura limpia en espa\~nol. Presentada por Robert C. Martin (Uncle Bob) en su blog, el 13 de agosto de 2012 \cite{cleanArchitecture}}, la cual es una arquitectura por capas.  En la figura \ref{cleanArchitecture} se muestra la Arquitectura de software \textit{Clean Architecture} implementada en OLS. Se puede observar la separaci\'on de las capas y la dependencia que existe entre ellas.
 
 \begin{wrapfigure}{l}{0.5\textwidth} 
 \vspace{-20pt} 
 \begin{center} 
-\includegraphics[width=0.53\textwidth]{images/cleanArquitecture.png} 
-\end{center} \vspace{-20pt} \caption{Arquitectura de software \textit{Clean Architecture} implementada en OLS en su \'ultima versi\'on.} \label{cleanArquitecture} \vspace{-10pt} 
+\includegraphics[width=0.53\textwidth]{images/cleanArchitecture.png} 
+\end{center} \vspace{-20pt} \caption{Arquitectura de software \textit{Clean Architecture} implementada en OLS en su \'ultima versi\'on.} \label{cleanArchitecture} \vspace{-10pt} 
 \end{wrapfigure}
 
 En la \'ultima versi\'on, OLS presenta tres capas:
@@ -121,7 +121,7 @@ $\bullet$ \textbf{OpenLatino.MapServer.} Depende de la capa OpenLatino.Core. Se 
 
 $\bullet$ \textbf{OpenLatino.Admin}. Depende de las capas anteriores, posee la implementaci\'on de los controladores encargados de recibir las peticiones de las aplicaciones cliente.
 
-En la nueva versi\'on de OLS, con la implementaci\'on de la interfaz visual de configuraci\'on en Angular, se hizo necesario modificar la arquitectura, manteniendo los principios de \textit{Clean Arquitecture}, garantizando la extensibilidad, seguridad y buenas pr\'acticas del servidor. La nueva arquitectura de OLS se muestra en la figura \ref{cleanArquitectureNew}.
+En la nueva versi\'on de OLS, con la implementaci\'on de la interfaz visual de configuraci\'on en Angular, se hizo necesario modificar la arquitectura, manteniendo los principios de \textit{Clean Architecture}, garantizando la extensibilidad, seguridad y buenas pr\'acticas del servidor. La nueva arquitectura de OLS se muestra en la figura \ref{cleanArchitectureNew}.
 
 Se elimin\'o la capa m\'as externa de la arquitectura de OLS y, en su lugar, se implementaron tres nuevas capas:
 
@@ -130,8 +130,8 @@ $\bullet$ \textbf{OpenLatino.Admin.Infraestructure}. Consiste en una capa de abs
 \begin{wrapfigure}{l}{0.5\textwidth}
 \vspace{-20pt}
 \begin{center}
-\includegraphics[width=0.52\textwidth]{images/cleanArquitectureNew.png} 
-\end{center} \vspace{-20pt} \caption{Arquitectura de software \textit{Clean Architecture} de OLS modificada.}  \label{cleanArquitectureNew} \vspace{-10pt} 
+\includegraphics[width=0.52\textwidth]{images/cleanArchitectureNew.png} 
+\end{center} \vspace{-20pt} \caption{Arquitectura de software \textit{Clean Architecture} de OLS modificada.}  \label{cleanArchitectureNew} \vspace{-10pt} 
 \end{wrapfigure}
 
 $\bullet$ \textbf{OpenLatino.Admin.Application}. Esta capa contiene interfaces que se utilizan para comunicarse entre la capa OpenLatino.Admin.Server y la capa de repositorio. Contiene los servicios asociados a una entidad espec\'ifica, ya sean proveedores, tem\'aticos, estilos, etc.
@@ -147,7 +147,7 @@ Para crear la interfaz visual se generaron templates con HTML, controlando estos
 \begin{wrapfigure}{l}{0.5\textwidth}
 \vspace{-20pt}
 \begin{center}
-\includegraphics[width=0.52\textwidth]{images/angularArquitecture.png} 
+\includegraphics[width=0.52\textwidth]{images/angularArchitecture.png} 
 \end{center} \vspace{-20pt} \caption{Arquitectura de software de la interfaz visual.}  \label{arquitecturaAngular} \vspace{-10pt} 
 \end{wrapfigure}
 
@@ -157,10 +157,10 @@ Las componentes son clases que contienen la plantilla de la vista, y la l\'ogica
 
 
 \section{Detalles de implementaci\'on}
-En esta secci\'on se explicar\'a los cambios en el c\'odigo para la creaci\'on del nuevo tipo de mapa tem\'atico de categor\'ias, explicando el proceso para crear nuevos tipos de tem\'aticos. Se abordar\'a, tambi\'en, c\'omo fue implementada la seguridad de la interfaz visual y del servidor, no sin antes abordar en qu\'e consiste el est\'andar de seguridad JWT (JSON Web Token por sus siglas en ingl\'es).
+En esta secci\'on se explicar\'an los cambios en el c\'odigo para la creaci\'on del nuevo tipo de mapa tem\'atico de categor\'ias, explicando el proceso para crear nuevos tipos de tem\'aticos. Se abordar\'a, tambi\'en, c\'omo fue implementada la seguridad de la interfaz visual y del servidor, no sin antes abordar en qu\'e consiste el est\'andar de seguridad JWT (JSON Web Token por sus siglas en ingl\'es).
 
 \subsection{Implementaci\'on de mapas tem\'aticos}
-Para crear el nuevo tipo de mapa tem\'atico se elmin\'o la entidad \texttt{TematicQuery}, creando en su lugar la nueva entidad \texttt{TematicType} (figura \ref{tematicType}), la cual contiene las propiedas inherentes a todo tipo de tem\'atico: Id, nombre, funci\'on, que constituye los filtros, y los estilos asociados. Se cre\'o, adem\'as, la entidad \texttt{TematicLayer} que contiene el nombre y el Id del tem\'atico.
+Para crear el nuevo tipo de mapa tem\'atico se elimin\'o la entidad \texttt{TematicQuery}, creando en su lugar la nueva entidad \texttt{TematicType} (figura \ref{tematicType}), la cual contiene las propiedas inherentes a todo tipo de tem\'atico: Id, nombre, funci\'on, que constituye los filtros, y los estilos asociados. Se cre\'o, adem\'as, la entidad \texttt{TematicLayer} que contiene el nombre y el Id del tem\'atico.
 
 \begin{wrapfigure}{l}{0.5\textwidth}
 \vspace{-20pt}
@@ -178,7 +178,7 @@ Para crear nuevos tem\'aticos se crea una nueva clase que herede de la nueva ent
 \end{center} \vspace{-20pt} \caption{Estructura para crear nuevos tipos de mapas tem\'aticos.}  \label{nuevosTipos} \vspace{-10pt} 
 \end{wrapfigure}
 
-Al heredar de esta clase, autom\'aticamente la clase queda relacionada con la entidad \texttt{StyleConfig}, de esta manera no hay que modificar nada en la estructura existente: se crea la nueva entidad, se agrega alg\'un campo extra que necesite tener y se genera una nueva migraci\'on porque se modifica la base de datos existente a la agregar el nuevo tipo.
+Al heredar de esta clase, autom\'aticamente la clase queda relacionada con la entidad \texttt{StyleConfig}, de esta manera no hay que modificar nada en la estructura existente: se crea la nueva entidad, se agrega alg\'un campo extra que necesite tener y se genera una nueva migraci\'on porque se modifica la base de datos existente al agregar el nuevo tipo.
 
 Se crea, adem\'as, una interfaz \texttt{ITematicLayer Helper}, en sustituci\'on de la interfaz existente, que tiene los m\'etodos que permiten el trabajo con mapas tem\'aticos. El servicio \texttt{TematicLayerService} implementa esta interfaz. 
 
@@ -190,7 +190,7 @@ $\bullet$ \textbf{ITematicLayerHelper} $\rightarrow$ \textbf{TematicLayerService
 
 $\bullet$ \textbf{ITematicLayerHelper} $\rightarrow$ \textbf{NewService}. Crear un nuevo servicio que tenga una implementaci\'on diferente de los m\'etodos actuales.
 
-$\bullet$ \textbf{NewInterfaceHelper} $\rightarrow$ \textbf{NewService}. Crear una nueva interface, y un servicio que la implemente (para mantener la estructura de la aplicaci\'on) debido a que el nuevo tem\'atico no usa m\'etodos diferentes a los definidos en la existente.
+$\bullet$ \textbf{NewInterfaceHelper} $\rightarrow$ \textbf{NewService}. Crear una nueva interface, y un servicio que la implemente (para mantener la estructura de la aplicaci\'on) debido a que el nuevo tem\'atico usa m\'etodos diferentes a los definidos en la existente.
 
 La opci\'on a escoger var\'ia de acuerdo a las necesidades del programador, dependiendo de las funcionalidades del nuevo tem\'atico a implementar.
 
@@ -208,7 +208,7 @@ Json Web Token (JWT) es un est\'andar para transmitir informaci\'on de forma seg
 \end{center} \vspace{-20pt} \caption{Login en OLS desde la interfaz visual.}  \label{login} \vspace{-10pt} 
 \end{wrapfigure}
 
-El contenido del token se encuentra firmado digitalmente, por lo que se puede comprobar su veracidad, gracias a esta certificaci\'on, el servidor web puede aprobar de forma segura todas las peticiones se hagan desde esa sesi\'on en nombre de ese usuario. Un JWT se divide en tres partes, el \textit{header}, que contiene el tipo de token y la informaci\'on del algoritmo de codificaci\'on\footnote{Usualmente HS256, que genera una firma sim\'etrica, esto quiere decir que el secret/key se usa tanto para el firmado como para la verificaci\'on de la firma.} usado. El \textit{Payload} contiene la informaci\'on relativa al usuario, si es admin o usuario regular, cuando inici\'o sesi'on, su Id en el sistema, etc\'etera.
+El contenido del token se encuentra firmado digitalmente, por lo que se puede comprobar su veracidad. Gracias a esta certificaci\'on, el servidor web puede aprobar de forma segura todas las peticiones que se hagan desde esa sesi\'on en nombre de ese usuario. Un JWT se divide en tres partes: el \textit{header}, que contiene el tipo de token y la informaci\'on del algoritmo de codificaci\'on\footnote{Usualmente HS256, que genera una firma sim\'etrica, esto quiere decir que el secret/key se usa tanto para el firmado como para la verificaci\'on de la firma.} usado. El \textit{Payload}, que contiene la informaci\'on relativa al usuario, si es admin o usuario regular, cuando inici\'o sesi'on, su Id en el sistema, etc\'etera.
 
 \begin{wrapfigure}{l}{0.5\textwidth}
 \vspace{-20pt}
@@ -217,11 +217,11 @@ El contenido del token se encuentra firmado digitalmente, por lo que se puede co
 \end{center} \vspace{-20pt} \caption{JWT en OLS.}  \label{jwtOLS} \vspace{-10pt} 
 \end{wrapfigure}
 
-Finalmente, \textit{Signature} contiene la firma digital del token, creada combinando el header y el payload, basado en una clave secreta que solo el servidor conoce. Los JWT se generan en OLS cuando un usuario inicia sesi\'on en el sistema, la figura \ref{jwtOLS} muestra el fragmento de c\'odigo donde se crea el token y se retorna a la vista. \texttt{JwtSecurityToken} contiene importantes par\'ametros: los dos primeros son para verificar que OLS es el que esta respondiendo los pedidos a la vista, la tercera propiedad contienen informaci\'on acerca del usuario que inici\'o sesi\'on en el sistema; el \'ultimo par\'ametro contiene la firma digital.
+Finalmente, \textit{Signature} contiene la firma digital del token, creada combinando el header y el payload, basado en una clave secreta que solo el servidor conoce. Los JWT se generan en OLS cuando un usuario inicia sesi\'on en el sistema, la figura \ref{jwtOLS} muestra el fragmento de c\'odigo donde se crea el token y se retorna a la vista. \texttt{JwtSecurityToken} contiene importantes par\'ametros: los dos primeros son para verificar que OLS es el que esta respondiendo los pedidos a la vista, la tercera propiedad contiene informaci\'on acerca del usuario que inici\'o sesi\'on en el sistema; el \'ultimo par\'ametro contiene la firma digital.
 
 A\'un con todas las comprobaciones que se realizan, existe un problema grave de seguridad, ya que un agente externo puede interceptar los pedidos que viajan a OLS desde la interfaz visual y obtener un token que no es suyo, esto implica que puede usarlo para realizar pedidos al servidor como si fuera ese cliente y acceder a informaci\'on confidencial sin ser detectado. 
 
-Para resolver este problema se le establece un tiempo de vida limitado para cada token, es decir, cada uno de los tokens que se les entrega a los clientes ser\'a v\'alido solo por un tiempo prefijado. Este cambio garantiza que, si un token es robado, una vez que se agote su tiempo de vida, no servir\'a. En el caso de OlS, se a\~nade la propiedad \texttt{ expires: DateTime.Now.AddMinutes(30)} al JWT, lo que quiere decir que un usuario se mantendr\'a registrado en el sistema solo por media hora, pasado ese tiempo debe volver a ingresar mediante su contrase\~na.
+Para resolver este problema se le establece un tiempo de vida limitado para cada token, es decir, cada uno de los tokens que se les entrega a los clientes ser\'a v\'alido solo por un tiempo prefijado. Este cambio garantiza que, si un token es robado, una vez que se agote su tiempo de vida, no servir\'a. En el caso de OLS, se a\~nade la propiedad \texttt{ expires: DateTime.Now.AddMinutes(30)} al JWT, lo que quiere decir que un usuario se mantendr\'a registrado en el sistema solo por media hora, pasado ese tiempo debe volver a ingresar mediante su contrase\~na.
 
 \begin{wrapfigure}{l}{0.5\textwidth}
 \vspace{-20pt}
@@ -230,7 +230,7 @@ Para resolver este problema se le establece un tiempo de vida limitado para cada
 \end{center} \vspace{-20pt} \caption{Seguridad en la interfaz visual.}  \label{auth} \vspace{-10pt} 
 \end{wrapfigure}
 
-Del lado del FrontEnd tambi\'en se hacen verificaciones de seguridad, mediante el JWT enviado desde el servidor. Se realizan validaciones, permintiendo a los usuarios acceder a las  vistas de configuraci\'on, seg\'un sus roles. Un usuario que no est\'a logeado no puede acceder a ninguna vista de configuraci\'on, adem\'as, si no es administrador no puede acceder a todas las vistas. En el \texttt{app-routing-module}, mediante la propiedad \texttt{canActivate}, la que recibe, mediante inyecci\'on de dependencia las clases que verifican, de acuerdo al JWT, si el usuario tiene acceso a la ruta solicitada. En la figura \ref{auth} se muestra la clase encargada de verificar si un usuario esta logeado y si su sesi\'on no ha expirado.
+Del lado del FrontEnd tambi\'en se hacen verificaciones de seguridad, mediante el JWT enviado desde el servidor. Se realizan validaciones, permintiendo a los usuarios acceder a las  vistas de configuraci\'on, seg\'un sus roles. Un usuario que no est\'a logeado no puede acceder a ninguna vista de configuraci\'on, adem\'as, si no es administrador no puede acceder a todas las vistas. En el \texttt{app-routing-module}, mediante la propiedad \texttt{canActivate}, se reciben, por inyecci\'on de dependencia, las clases que verifican, de acuerdo al JWT, si el usuario tiene acceso a la ruta solicitada. En la figura \ref{auth} se muestra la clase encargada de verificar si un usuario esta logeado y si su sesi\'on no ha expirado.
 
 Finalmente, se incluyen los los JWT en los pedidos del FrontEnd a OLS en el header de Autorizaci\'on\footnote{Authorization header, en ingl\'es, contiene las credenciales para autenticar a un usuario en un servidor}.
 
